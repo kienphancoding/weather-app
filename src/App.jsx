@@ -5,7 +5,7 @@ import Main from "./components/Main";
 
 function App() {
   const [isLocation, setIsLocation] = useState(false);
-  
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: true,

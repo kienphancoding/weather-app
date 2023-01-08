@@ -1,18 +1,18 @@
-@function multiple-shadow($length){
-    $value: 2px -1px 0 #000;
-    @for $i from 2 through $length{
-        $ho: $i * 2;
-        $vo: -#{$ho / 2};
-        $col: hsl(0deg, 0%, $i * 2%);
-        $value: $value, #{$ho}px #{$vo}px 0 $col
-    }
-    @return $value;
+@function multiple-shadow($length) {
+  $value: 2px -1px 0 #000;
+  @for $i from 2 through $length {
+    $ho: $i * 2;
+    $vo: -#{$ho / 2};
+    $col: hsl(0deg, 0%, $i * 2%);
+    $value: $value, #{$ho}px #{$vo}px 0 $col;
+  }
+  @return $value;
 }
 
 .number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #fff;
   font: 900 30vmin "Consolas";
   letter-spacing: 5vmin;

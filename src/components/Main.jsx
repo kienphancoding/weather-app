@@ -9,6 +9,42 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
+
+  const monthNames = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+
+  const dateNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thurday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const d = new Date();
+
+  const handleDate = (day) => {
+    if (day < 7) {
+      return dateNames[day].toUpperCase().slice(0, 3);
+    } else {
+      return dateNames[day - 7].toUpperCase().slice(0, 3);
+    }
+  };
+
   useEffect(() => {
     const options = {
       enableHighAccuracy: true,
@@ -46,41 +82,7 @@ const Main = () => {
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
-  console.log(data);
-  const monthNames = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
 
-  const dateNames = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thurday",
-    "Friday",
-    "Saturday",
-  ];
-
-  const d = new Date();
-
-  const handleDate = (day) => {
-    if (day < 7) {
-      return dateNames[day].toUpperCase().slice(0, 3);
-    } else {
-      return dateNames[day - 7].toUpperCase().slice(0, 3);
-    }
-  };
   return (
     <>
       {isLoading && <Loading />}
@@ -152,12 +154,6 @@ const Main = () => {
               </ul>
               <div className="clear"></div>
             </div>
-            {/* <div className="location-container">
-              <button className="location-button">
-                <FontAwesomeIcon icon={faLocationDot} />
-                <span>Change location</span>
-              </button>
-            </div> */}
           </div>
         </div>
       )}
